@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,6 +64,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			fontFamily: {
+				'poppins': ['Poppins', 'sans-serif'],
+				'sf-pro': ['SF Pro Display', 'system-ui', 'sans-serif'],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -84,11 +89,35 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'wave': {
+					'0%, 100%': { transform: 'translateX(0%)' },
+					'50%': { transform: 'translateX(-50%)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 0 0 rgba(255, 255, 255, 0.4)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 0 10px rgba(255, 255, 255, 0)' 
+					}
+				},
+				'typewriter': {
+					'0%': { width: '0' },
+					'100%': { width: '100%' }
+				},
+				'blink': {
+					'0%, 50%': { borderColor: 'transparent' },
+					'51%, 100%': { borderColor: 'white' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'wave': 'wave 8s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s infinite',
+				'typewriter': 'typewriter 2s steps(40, end)',
+				'blink': 'blink 1s infinite'
 			}
 		}
 	},
