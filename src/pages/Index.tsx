@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Mic, MicOff, RotateCcw, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -144,8 +143,10 @@ const Index = () => {
       // Clean and format the command
       const cleanCommand = command.toLowerCase().trim();
       
-      // Simulate webhook call (replace with actual webhook URL)
-      const webhookUrl = 'https://your-webhook-url.com/voice-command';
+      // n8n webhook URL
+      const webhookUrl = 'https://mochamadarif.app.n8n.cloud/webhook-test/c6846426-c38d-4230-979f-1cbed0867bed';
+      
+      console.log("Sending command to n8n webhook:", cleanCommand);
       
       const response = await fetch(webhookUrl, {
         method: 'POST',
@@ -160,6 +161,9 @@ const Index = () => {
       });
 
       if (response.ok) {
+        const result = await response.text();
+        console.log("n8n webhook response:", result);
+        
         toast({
           title: "Command Sent",
           description: `Successfully processed: "${cleanCommand}"`,
@@ -167,16 +171,15 @@ const Index = () => {
         setTranscript('');
         setManualInput('');
       } else {
-        throw new Error('Webhook response not ok');
+        throw new Error(`Webhook response: ${response.status}`);
       }
     } catch (error) {
       console.error('Error sending command:', error);
       toast({
-        title: "Command Sent",
-        description: `Command processed: "${command.toLowerCase().trim()}"`,
+        title: "Error",
+        description: "Failed to send command to n8n webhook. Please check your connection.",
+        variant: "destructive"
       });
-      setTranscript('');
-      setManualInput('');
     } finally {
       setIsProcessing(false);
     }
