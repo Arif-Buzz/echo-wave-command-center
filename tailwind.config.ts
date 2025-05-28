@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -109,6 +108,30 @@ export default {
 				'blink': {
 					'0%, 50%': { borderColor: 'transparent' },
 					'51%, 100%': { borderColor: 'white' }
+				},
+				'gradient-shift': {
+					'0%, 100%': { 
+						backgroundPosition: '0% 50%' 
+					},
+					'25%': { 
+						backgroundPosition: '100% 50%' 
+					},
+					'50%': { 
+						backgroundPosition: '50% 100%' 
+					},
+					'75%': { 
+						backgroundPosition: '50% 0%' 
+					}
+				},
+				'gradient-pulse': {
+					'0%, 100%': { 
+						opacity: '0.3',
+						transform: 'scale(1)' 
+					},
+					'50%': { 
+						opacity: '0.6',
+						transform: 'scale(1.05)' 
+					}
 				}
 			},
 			animation: {
@@ -117,7 +140,9 @@ export default {
 				'wave': 'wave 8s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 2s infinite',
 				'typewriter': 'typewriter 2s steps(40, end)',
-				'blink': 'blink 1s infinite'
+				'blink': 'blink 1s infinite',
+				'gradient-shift': 'gradient-shift 20s ease-in-out infinite',
+				'gradient-pulse': 'gradient-pulse 15s ease-in-out infinite'
 			}
 		}
 	},

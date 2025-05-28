@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,4 +99,40 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Animasi gradien yang halus dan elegan untuk latar belakang Web3 */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+}
+
+@keyframes gradient-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease-in-out infinite;
+}
+
+.animate-gradient-pulse {
+  animation: gradient-pulse 15s ease-in-out infinite;
 }
